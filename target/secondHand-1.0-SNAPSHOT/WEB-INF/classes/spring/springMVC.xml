@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:spring/conf.properties"/>
+    <!--此处 的作用是扫描该包下所有带有@Controller注解的类-->
+    <context:component-scan base-package="com.xcy.controller"/>
+    <!-- <mvc:annotation-driven/>  这句话的作用之一是配置处理器映射器和处理器适配器，默认有，可省略-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/" />
+        <property name="suffix" value=".html"/>
+    </bean>
+
+    <!--文件上传解析器，用于文件的上传，如果没有文件上传，不用配置此项，id必须是multipartResolver-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--配置图片的最大值-->
+        <property name="maxUploadSize" value="5242880"/>
+    </bean>
+
+    <mvc:annotation-driven />
+    <mvc:default-servlet-handler />
+
+</beans>

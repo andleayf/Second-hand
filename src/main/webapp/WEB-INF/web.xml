@@ -50,8 +50,8 @@
     </context-param>
 
     <!--遇到400错误跳转到的页面-->
-    <error-page>
+   <!-- <error-page>
         <error-code>404</error-code>
         <location>/WEB-INF/error.html</location>
-    </error-page>
+    </error-page>-->
 </web-app>

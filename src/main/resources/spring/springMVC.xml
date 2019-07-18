@@ -17,6 +17,12 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="maxUploadSize" value="5242880"/>
     </bean>
 
+    <!--swagger2-->
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+    <!--注册SwaggerConfig-->
+    <bean id="swaggerConfig" class="com.xcy.Swagger2Configuration"></bean>
+
     <mvc:annotation-driven />
     <mvc:default-servlet-handler />
 

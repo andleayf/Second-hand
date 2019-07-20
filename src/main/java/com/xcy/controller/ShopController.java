@@ -26,6 +26,7 @@ public class ShopController {
     public String slideShow(){
         List<ShopSome> shopSomes = shopService.selectShopImg();
         String s = JsonUtils.objectToJson(shopSomes);
+        System.out.println(s);
         return s;
     }
 }

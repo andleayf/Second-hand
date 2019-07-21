@@ -44,7 +44,7 @@ public class GoodsController {
        return goodsList;
     }
 
-    @RequestMapping("/getHotGoodsType")
+    @RequestMapping(value = "/getHotGoodsType",method = RequestMethod.GET)
     @ApiOperation("获取热门搜索，根据搜索次数排序，显示前五条")
     @ResponseBody
     public List<GoodsType> getHotGoodsType(){

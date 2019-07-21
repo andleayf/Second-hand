@@ -47,7 +47,7 @@ public class UserController {
         return  userService.getUserSearchHistory(id);
     }
 
-    @RequestMapping("/deleteSearchHisotry")
+    @RequestMapping(value = "/deleteSearchHisotry",method = RequestMethod.GET)
     @ApiOperation("根据用户的id删除用户的搜索历史")
     @ResponseBody
     public Result<Map<String,Integer>> deleteSearchHistory(@ApiParam(name = "id",value = "用户id") @RequestParam() int id){

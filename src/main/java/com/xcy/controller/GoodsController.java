@@ -1,12 +1,14 @@
 package com.xcy.controller;
 
 import com.xcy.pojo.Goods;
-import com.xcy.pojo.GoodsType;
 import com.xcy.service.GoodsService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -42,12 +44,5 @@ public class GoodsController {
     public List<Goods> getLatestGoodsList(){
        List<Goods> goodsList =  goodsService.getLatestGoodsList();
        return goodsList;
-    }
-
-    @RequestMapping("/getHotGoodsType")
-    @ApiOperation("获取热门搜索，根据搜索次数排序，显示前五条")
-    @ResponseBody
-    public List<GoodsType> getHotGoodsType(){
-        return goodsService.getHotGoodsType();
     }
 }

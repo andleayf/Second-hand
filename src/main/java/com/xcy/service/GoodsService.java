@@ -1,7 +1,6 @@
 package com.xcy.service;
 
 import com.xcy.pojo.Goods;
-import com.xcy.pojo.GoodsType;
 
 import java.util.List;
 
@@ -12,6 +11,4 @@ public interface GoodsService {
      * @return
      */
     List<Goods> getLatestGoodsList();
-
-    List<GoodsType> getHotGoodsType();
 }

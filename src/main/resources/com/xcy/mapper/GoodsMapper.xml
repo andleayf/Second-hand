@@ -8,8 +8,4 @@
         select goodsId,goodsImg from goods where status = 0 limit 4
     </select>
 
-    <select id="getHotGoodsType" resultType="goodsType">
-        select id,typeName,searchCount from goodsType order by searchCount limit 5;
-    </select>
-
 </mapper>

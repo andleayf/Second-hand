@@ -12,8 +12,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     OrderMapper orderMapper;
     @Override
-    public List<Order> selectOrderById(int orderId) {
-        return orderMapper.selectOrderById(orderId);
+    public List<Order> selectOrderById(int orderId,int status) {
+        return orderMapper.selectOrderById(orderId,status);
 
     }
 }

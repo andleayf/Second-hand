@@ -22,4 +22,24 @@
     <update id="getDeleteSearchHistory" parameterType="int">
         delete from searchHistory where userId = #{id}
     </update>
+
+    <insert id="userAdd" parameterType="com.xcy.pojo.User">
+        insert into user(userId,userPhone,userPassword,userCode)
+        value (#{userId},#{userPhone},#{userPassword},#{userCode})
+    </insert>
+    <update id="userChangePassword" parameterType="com.xcy.pojo.User">
+        update user
+        set userPassword = #{userPassword}
+        where userPhone = #{userPhone}
+    </update>
+
+    <select id="selectUserPhone" parameterType="string" resultType="int">
+        select count(1) from user where userPhone = #{phone}
+    </select>
+    <select id="userLogin" parameterType="com.xcy.pojo.User" resultType="java.lang.Integer">
+        select count(1) from user where userPhone = #{userPhone} and userPassword = #{userPassword}
+    </select>
+    <select id="selectUserCode" parameterType="com.xcy.pojo.User" resultType="int">
+        select count(1) from user where userPhone = #{userPhone} and userCode = #{userCode}
+    </select>
 </mapper>

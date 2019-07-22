@@ -3,6 +3,7 @@ package com.xcy.controller;
 import com.xcy.pojo.Address;
 import com.xcy.pojo.Result;
 import com.xcy.pojo.SearchHistory;
+import com.xcy.pojo.User;
 import com.xcy.service.AddressService;
 import com.xcy.service.UserService;
 import io.swagger.annotations.ApiModel;
@@ -63,5 +64,68 @@ public class UserController {
             result.setStatus(0);
         }
         return  result;
+    }
+
+    @RequestMapping(value = "/userPhoneExists",method = RequestMethod.POST)
+    @ApiOperation("判断该手机号数据库中是否存在，存在返回字符串exist，不存在返回字符串notExist")
+    @ResponseBody
+    public String userPhoneExists(@ApiParam("用户输入的手机号") @RequestParam(name = "phone",required = true) String phone){
+        System.out.println("phone:"+phone);
+        int i = userService.selectUserPhone(phone);
+        System.out.println(i);
+        return i == 1? "exist":"notExist";
+    }
+
+    @RequestMapping(value = "/userAdd",method = RequestMethod.POST)
+    @ApiOperation("用户注册")
+    @ResponseBody
+    public String userAdd(@ApiParam("用户输入的手机号userPhone") @RequestParam(name = "userPhone",required = true) String userPhone,
+                          @ApiParam("用户输入的密码userPassword") @RequestParam(name = "userPassword",required = true) String userPassword,
+                          @ApiParam("用户输入的验证码userCode") @RequestParam(name = "userCode",required = true) String userCode){
+
+        User user = new User();
+        user.setUserPhone(userPhone);
+        user.setUserPassword(userPassword);
+        user.setUserCode(userCode);
+        int i = userService.userAdd(user);
+
+        return i == 1? "addSuccess":"addFail";
+    }
+
+    @RequestMapping(value = "/userLogin",method = RequestMethod.POST)
+    @ApiOperation("用户登录，登录成功返回字符串loginSuccess,登录失败返回字符串loginFail")
+    @ResponseBody
+    public String userLogin(@ApiParam("用户输入的手机号userPhone") @RequestParam(name = "userPhone",required = true) String userPhone,
+                            @ApiParam("用户输入的密码userPassword") @RequestParam(name = "userPassword",required = true)String userPassword){
+        User user = new User();
+        user.setUserPhone(userPhone);
+        user.setUserPassword(userPassword);
+        int i = userService.userLogin(user);
+
+        return i == 1? "loginSuccess":"loginFail";
+    }
+
+    @RequestMapping(value = "/userChangePassword",method = RequestMethod.POST)
+    @ApiOperation("找回用户密码,修改成功返回字符串changeSuccess,修改失败返回字符串changeFail")
+    @ResponseBody
+    public String userChangePassword(@ApiParam("用户输入的手机号userPhone") @RequestParam(name = "userPhone",required = true) String userPhone,
+                                     @ApiParam("用户输入的新修改的密码，userPassword") @RequestParam(name = "userPassword",required = true) String userPassword){
+        User user = new User();
+        user.setUserPassword(userPassword);
+        user.setUserPhone(userPhone);
+        int i = userService.userChangePassword(user);
+        return i == 1? "changeSuccess":"changeFail";
+    }
+
+    @RequestMapping(value = "/userCodeCheck",method = RequestMethod.POST)
+    @ApiOperation("检验用户验证码，如果验证码正确，返回字符串trueCode，如果不正确，返回字符串falseCode")
+    @ResponseBody
+    public String userCodeCheck(@ApiParam("用户输入的手机号userPhone") @RequestParam(name = "userPhone",required = true) String userPhone,
+                                @ApiParam("用户输入的验证码userCode") @RequestParam(name = "userCode",required = true) String userCode){
+        User user = new User();
+        user.setUserPhone(userPhone);
+        user.setUserCode(userCode);
+        int i = userService.selectUserCode(user);
+        return i == 1? "trueCode":"falseCode";
     }
 }

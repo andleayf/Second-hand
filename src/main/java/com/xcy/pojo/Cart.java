@@ -1,7 +1,21 @@
 package com.xcy.pojo;
 
-public class Goods {
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
+public class Cart {
+    private int cartId;
+    private int userId;
     private int goodsId;
+    private int status;
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    private Date createTime;
+
+    //goods
+
+
     private String varchar;
     private int goodsNowPrice;
     private int goodsMarkerPrice;
@@ -12,22 +26,25 @@ public class Goods {
     private String goodsSex;
     private  int typeId;
     private String goodsImg;
-    private int status;
 
-    public int getTypeId() {
-        return typeId;
+
+
+
+
+    public int getCartId() {
+        return cartId;
     }
 
-    public void setTypeId(int typeId) {
-        this.typeId = typeId;
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
     }
 
-    public int getStatus() {
-        return status;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getGoodsId() {
@@ -102,12 +119,30 @@ public class Goods {
         this.goodsSex = goodsSex;
     }
 
+
+
     public String getGoodsImg() {
         return goodsImg;
     }
 
     public void setGoodsImg(String goodsImg) {
         this.goodsImg = goodsImg;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Date getCreatTime() {
+        return createTime;
+    }
+
+    public void setCreatTime(Date creatTime) {
+        this.createTime = creatTime;
     }
 
 

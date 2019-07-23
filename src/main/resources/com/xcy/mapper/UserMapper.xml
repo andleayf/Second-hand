@@ -22,4 +22,8 @@
     <update id="getDeleteSearchHistory" parameterType="int">
         delete from searchHistory where userId = #{id}
     </update>
+
+    <select id="selectIdentify" resultType="identify" >
+        select i.*,g.goodsName,u.userId,u.userName from identify i left join goods g on i.goodsId=g.goodsId left join user u on g.userId=u.userId
+    </select>
 </mapper>

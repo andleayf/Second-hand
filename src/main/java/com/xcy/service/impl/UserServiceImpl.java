@@ -1,6 +1,7 @@
 package com.xcy.service.impl;
 
 import com.xcy.mapper.UserMapper;
+import com.xcy.pojo.Identify;
 import com.xcy.pojo.Result;
 import com.xcy.pojo.SearchHistory;
 import com.xcy.service.UserService;
@@ -22,5 +23,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public int deleteSearchHistory(int id) {
         return userMapper.getDeleteSearchHistory(id);
+    }
+
+    @Override
+    public List<Identify> selectIdentify() {
+        return userMapper.selectIdentify();
     }
 }

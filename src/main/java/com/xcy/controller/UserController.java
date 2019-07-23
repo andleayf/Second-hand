@@ -1,6 +1,7 @@
 package com.xcy.controller;
 
 import com.xcy.pojo.Address;
+import com.xcy.pojo.Identify;
 import com.xcy.pojo.Result;
 import com.xcy.pojo.SearchHistory;
 import com.xcy.service.AddressService;
@@ -63,5 +64,13 @@ public class UserController {
             result.setStatus(0);
         }
         return  result;
+    }
+
+    @RequestMapping(value = "/selectResult",method = RequestMethod.GET )
+    @ResponseBody
+    @ApiOperation("鉴定用户服务")
+    public List<Identify> resultUser(){
+        List<Identify> identifyList =userService.selectIdentify();
+        return identifyList;
     }
 }

@@ -1,5 +1,6 @@
 package com.xcy.service;
 
+import com.xcy.pojo.Identify;
 import com.xcy.pojo.Result;
 import com.xcy.pojo.SearchHistory;
 import com.xcy.pojo.User;
@@ -22,4 +23,6 @@ public interface UserService {
     int userChangePassword(User user);
 
     int selectUserCode(User user);
+
+    List<Identify> selectIdentify();
 }

@@ -1,6 +1,7 @@
 package com.xcy.service.impl;
 
 import com.xcy.mapper.UserMapper;
+import com.xcy.pojo.Identify;
 import com.xcy.pojo.Result;
 import com.xcy.pojo.SearchHistory;
 import com.xcy.pojo.User;
@@ -48,5 +49,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public int selectUserCode(User user) {
         return userMapper.selectUserCode(user);
+    }
+
+    @Override
+    public List<Identify> selectIdentify() {
+        return userMapper.selectIdentify();
     }
 }

@@ -1,5 +1,6 @@
 package com.xcy.mapper;
 
+import com.xcy.pojo.Identify;
 import com.xcy.pojo.SearchHistory;
 import com.xcy.pojo.User;
 
@@ -20,4 +21,5 @@ public interface UserMapper {
 
     int selectUserCode(User user);
 
+    List<Identify> selectIdentify();
 }

@@ -1,7 +1,7 @@
 package com.xcy.mapper;
 
-import com.xcy.pojo.Identify;
 import com.xcy.pojo.SearchHistory;
+import com.xcy.pojo.User;
 
 import java.util.List;
 
@@ -10,5 +10,14 @@ public interface UserMapper {
 
     int getDeleteSearchHistory(int id);
 
-    List<Identify> selectIdentify();
+    int selectUserPhone(String phone);
+
+    int userAdd(User user);
+
+    int userLogin(User user);
+
+    int userChangePassword(User user);
+
+    int selectUserCode(User user);
+
 }

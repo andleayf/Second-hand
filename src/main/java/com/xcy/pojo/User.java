@@ -3,7 +3,7 @@ package com.xcy.pojo;
 public class User {
     private int userId;
     private String userPhone;
-    private String password;
+    private String userPassword;
     private String userCode;
     private String userName;
     private String userSex;
@@ -26,12 +26,12 @@ public class User {
         this.userPhone = userPhone;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserPassword(String password) {
+        this.userPassword = password;
     }
 
     public String getUserCode() {

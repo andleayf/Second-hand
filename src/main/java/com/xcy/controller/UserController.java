@@ -1,9 +1,6 @@
 package com.xcy.controller;
 
-import com.xcy.pojo.Address;
-import com.xcy.pojo.Identify;
-import com.xcy.pojo.Result;
-import com.xcy.pojo.SearchHistory;
+import com.xcy.pojo.*;
 import com.xcy.service.AddressService;
 import com.xcy.service.UserService;
 import io.swagger.annotations.ApiModel;
@@ -72,5 +69,12 @@ public class UserController {
     public List<Identify> resultUser(){
         List<Identify> identifyList =userService.selectIdentify();
         return identifyList;
+    }
+
+    @RequestMapping(value = "/getUserHeadImg",method = RequestMethod.GET)
+    @ApiOperation(value="获取该用户的所有地址")
+    @ResponseBody
+    public User getUserHeadImg(@ApiParam(name = "id",value = "用户Id",required = true) @RequestParam(name = "id",required = true)int id){
+        return userService.getUserHeadImg(id);
     }
 }

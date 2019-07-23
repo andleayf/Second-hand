@@ -46,4 +46,8 @@
     <select id="selectIdentify" resultType="identify">
         select * from identify i left join goods g on i.goodsId=g.goodsId left join user u on g.userId=u.userId
     </select>
+
+    <select id="getUserHeadImg" parameterType="int" resultType="user">
+        select * from user where userId = #{userId}
+    </select>
 </mapper>

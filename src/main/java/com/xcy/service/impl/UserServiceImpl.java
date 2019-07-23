@@ -55,4 +55,9 @@ public class UserServiceImpl implements UserService {
     public List<Identify> selectIdentify() {
         return userMapper.selectIdentify();
     }
+
+    @Override
+    public User getUserHeadImg(int id) {
+        return userMapper.getUserHeadImg(id);
+    }
 }

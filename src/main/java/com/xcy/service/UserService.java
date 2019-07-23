@@ -25,4 +25,6 @@ public interface UserService {
     int selectUserCode(User user);
 
     List<Identify> selectIdentify();
+
+    User getUserHeadImg(int id);
 }

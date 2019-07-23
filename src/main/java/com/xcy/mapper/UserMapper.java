@@ -22,4 +22,6 @@ public interface UserMapper {
     int selectUserCode(User user);
 
     List<Identify> selectIdentify();
+
+    User getUserHeadImg(int id);
 }

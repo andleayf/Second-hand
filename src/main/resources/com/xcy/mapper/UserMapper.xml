@@ -4,8 +4,46 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xcy.mapper.UserMapper">
 
-    <select id="getUserHeadImgById" resultType="user" parameterType="int">
-        select * from user where userId = #{userId}
+    <resultMap id="searchHistory" type="searchHistory">
+        <id column="id" property="id"></id>
+        <result column="typeId" property="typeId"></result>
+        <result column="userId" property="userId"></result>
+        <result column="" property="searchCount"></result>
+        <association property="goodsType" javaType="goodsType">
+            <id column="id" property="id"></id>
+            <result column="typeName" property="typeName"></result>
+        </association>
+    </resultMap>
+
+    <select id="getUserSearchHistory" parameterType="int" resultMap="searchHistory">
+        select * ,typeName from searchHistory s left join goodsType g on s.typeId = g.id order by searchCount limit 5 where userId = #{id};
     </select>
 
+    <update id="getDeleteSearchHistory" parameterType="int">
+        delete from searchHistory where userId = #{id}
+    </update>
+
+    <insert id="userAdd" parameterType="com.xcy.pojo.User">
+        insert into user(userId,userPhone,userPassword,userCode)
+        value (#{userId},#{userPhone},#{userPassword},#{userCode})
+    </insert>
+    <update id="userChangePassword" parameterType="com.xcy.pojo.User">
+        update user
+        set userPassword = #{userPassword}
+        where userPhone = #{userPhone}
+    </update>
+
+    <select id="selectUserPhone" parameterType="string" resultType="int">
+        select count(1) from user where userPhone = #{phone}
+    </select>
+    <select id="userLogin" parameterType="com.xcy.pojo.User" resultType="java.lang.Integer">
+        select count(1) from user where userPhone = #{userPhone} and userPassword = #{userPassword}
+    </select>
+    <select id="selectUserCode" parameterType="com.xcy.pojo.User" resultType="int">
+        select count(1) from user where userPhone = #{userPhone} and userCode = #{userCode}
+    </select>
+
+    <select id="selectIdentify" resultType="identify">
+        select * from identify i left join goods g on i.goodsId=g.goodsId left join user u on g.userId=u.userId
+    </select>
 </mapper>

@@ -10,4 +10,6 @@ public interface GoodsMapper {
     List<Goods> getLatestGoodsList();
 
     List<GoodsType> getHotGoodsType();
+
+    List<Goods> getGoodsByGoodsId(int goodsId);
 }

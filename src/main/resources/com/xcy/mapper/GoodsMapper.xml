@@ -11,5 +11,8 @@
     <select id="getHotGoodsType" resultType="goodsType">
         select id,typeName,searchCount from goodsType order by searchCount limit 5;
     </select>
+    <select id="getGoodsByGoodsId" resultType="goods" parameterType="int">
+        select * from goods where goodsId=#{goodsId}
+    </select>
 
 </mapper>

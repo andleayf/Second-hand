@@ -14,4 +14,6 @@ public interface GoodsService {
     List<Goods> getLatestGoodsList();
 
     List<GoodsType> getHotGoodsType();
+
+    List<Goods> getGoodsByGoodsId(int goodsId);
 }

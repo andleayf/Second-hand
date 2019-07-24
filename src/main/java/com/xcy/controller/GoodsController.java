@@ -50,4 +50,12 @@ public class GoodsController {
     public List<GoodsType> getHotGoodsType(){
         return goodsService.getHotGoodsType();
     }
+
+    @RequestMapping(value = "/getGoodsByGoodsId",method = RequestMethod.GET)
+    @ApiOperation("商品详情 根据userId获得orders表里的信息")
+    @ResponseBody
+    public List<Goods> getGoodsByGoodsId(int goodsId){
+        return goodsService.getGoodsByGoodsId(goodsId);
+    }
+
 }
